@@ -8,4 +8,5 @@ Sources:
 
 [1] edX Boot Camps LLC. Module 15, Day 1 Activities 09 and 10.
 
-[2] 
+[2] Customize earthquake markers:
+	https://joekell.github.io/leaflet_map/

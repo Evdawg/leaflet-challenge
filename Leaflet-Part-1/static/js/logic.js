@@ -1,14 +1,17 @@
 // Using Leaflet, create a map that plots all the earthquakes from your \
     // dataset based on their longitude and latitude.
 
-// source [1] through line 70:
+// source [1] through line 70, activity 10:
 const quakeUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson"
 
 console.log("Data shown represents significant quakes in past 30 days:")
 
+
 d3.json(quakeUrl).then(function (data) {
     // Once we get a response, send the data.features object to the createFeatures function.
     createFeatures(data.features);
+    // console.log(typeof(data.features));
+    // console.log(data);
   });
   
   function createFeatures(earthquakeData) {
@@ -23,14 +26,43 @@ d3.json(quakeUrl).then(function (data) {
     // Run the onEachFeature function once for each piece of data in the array.
     let earthquakes = L.geoJSON(earthquakeData, {
       onEachFeature: onEachFeature
+      
     });
-  
+    
+    console.log(earthquakes);
+    console.log(typeof(onEachFeature));
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Figure out marker customization here:
+    // see source [3]: https://joekell.github.io/leaflet_map/
+    // see also 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     // Send our earthquakes layer to the createMap function/
     createMap(earthquakes);
   }
-  
+
   function createMap(earthquakes) {
   
+
+
+
     // Create the base layers.
     let street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -66,17 +98,23 @@ d3.json(quakeUrl).then(function (data) {
     L.control.layers(baseMaps, overlayMaps, {
       collapsed: false
     }).addTo(myMap);
-  
+
+
+    // Your data markers should reflect the magnitude of the earthquake \
+        // by their size and the depth of the earthquake by color. \
+        // Earthquakes with higher magnitudes should appear larger, and earthquakes with greater \
+        // depth should appear darker in color.
+    // Hint: The depth of the earth can be found as the third coordinate for each earthquake.
+
+    // source [1] activity 09:
+
   }
-  
 
 
 
-// Your data markers should reflect the magnitude of the earthquake \
-    // by their size and the depth of the earthquake by color. \
-    // Earthquakes with higher magnitudes should appear larger, and earthquakes with greater \
-    // depth should appear darker in color.
-// Hint: The depth of the earth can be found as the third coordinate for each earthquake.
+
+
+
 
 
 
