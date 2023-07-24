@@ -160,46 +160,26 @@ d3.json(quakeUrl).then(function (data) {
     }).addTo(myMap);
 
 
-    // Your data markers should reflect the magnitude of the earthquake \
-        // by their size and the depth of the earthquake by color. \
-        // Earthquakes with higher magnitudes should appear larger, and earthquakes with greater \
-        // depth should appear darker in color.
-    // Hint: The depth of the earth can be found as the third coordinate for each earthquake.
 
-    // source [1] activity 09:
+      // Create a legend to display information about our map, source [2], [3]:
+      var info = L.control({
+        position: "bottomright"
+    });
+    // When the layer control is added, insert a div with the class of "legend"
+    info.onAdd = function() {
+        var div = L.DomUtil.create("div", "legend");
+        div.innerHTML=[
+            "<h2>Depth (km)</h2>",
+            "<p class='l10'>Less than 10</p>",
+            "<p class='l30'>Between 10 and 30</p>",
+            "<p class='l50'>Between 30 and 50</p>",
+            "<p class='l70'>Between 50 and 70</p>",
+            "<p class='l90'>Between 70 and 90</p>",
+            "<p class='g90'>Greater than 90</p>"
+        ].join("");
 
-          // Create a legend to display information about our map, source [2], [3]:
-          var info = L.control({
-            position: "bottomright"
-        });
-        // When the layer control is added, insert a div with the class of "legend"
-        info.onAdd = function() {
-            var div = L.DomUtil.create("div", "legend");
-            div.innerHTML=[
-                "<h2>Depth (km)</h2>",
-                "<p class='l10'>Less than 10</p>",
-                "<p class='l30'>Between 10 and 30</p>",
-                "<p class='l50'>Between 30 and 50</p>",
-                "<p class='l70'>Between 50 and 70</p>",
-                "<p class='l90'>Between 70 and 90</p>",
-                "<p class='g90'>Greater than 90</p>"
-            ].join("");
-
-            return div;
-        };
-        // Add the info legend to the map
-        info.addTo(myMap);
+        return div;
+    };
+    // Add the info legend to the map
+    info.addTo(myMap);
 }
-
-
-  
-// Include popups that provide additional information about the earthquake \
-    // when its associated marker is clicked.
-
-
-
-// Create a legend that will provide context for your map data.
-
-
-
-// Your visualization should look something like the preceding map.
