@@ -10,3 +10,6 @@ Sources:
 
 [2] Customize earthquake markers:
 	https://joekell.github.io/leaflet_map/
+
+[3] Custom Legend Control:
+	https://leafletjs.com/examples/choropleth/
